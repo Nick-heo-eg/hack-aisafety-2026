@@ -27,52 +27,38 @@
    **회사가 책임진다."** → 회사 패소
    ([판결 분석](https://www.canlii.org/en/commentary/doc/2025CanLIIDocs1963))
 
-→ AI 출력이 *법적 책임의 대상*이 된 첫 대표 사례.
+→ Air Canada 사건 이후, **AI 출력이 *법적 책임의 대상*** 이 되었습니다.
 
 ---
 
-## 그래서 생각해봤습니다
+## 그래서 이런 시스템들이 등장했습니다
 
-문제는 무엇이었을까? 어떻게 예방했어야 했을까?
+```
+Execution control layers (e.g., AIM Starfort)
+→ 정책 위반을 막는다
+→ HOLD / REDIRECT / SAFE RESPONSE
+```
 
-### 1. 게이트가 막았어야 했습니다
-
-*"사후 환불 가능"* — 존재하지 않는 정책 약속.
-이건 *실행 전 차단* 문제. AIM Starfort, OpenAI policy filter 같은
-게이트 영역.
-
-### 2. 그럼 정책을 더 강하게 만들면 끝일까?
-
-*"정책 외 답변 금지"*
-*"확인되지 않은 약속 금지"*
-
-→ 실제로는 이렇게 말이 *바뀝니다*:
-
-> *"지연되고 있으나 도와드리겠습니다."*
-> *"확인 후 안내드리겠습니다."*
-
-정책 위반 *아닙니다*. 하지만 **책임지지 못할 말** 입니다.
-
-### 3. 이건 위반이 아니라 *붕괴*입니다
-
-정책은 그대로인데, 상황(압박)에 따라 출력이 바뀝니다.
-
-> 시스템은 통과 → 결과는 사고
-
-❗ **policy violation** 이 아니라 **policy collapse**.
+이미 잘 작동하는 영역입니다. *건드리지 않습니다.*
 
 ---
 
-## 그럼 질문이 바뀝니다
+## 그럼 질문이 남습니다
 
-> **"이 붕괴는 *언제* 발생하는가?"**
+> **"통과하면, 정말 안전한가?"**
 
-같은 환불 실패 시나리오. 단 하나만 바꿨습니다 — **압박**.
+---
+
+## 그래서 저희는 조금 다른 케이스를 테스트해봤습니다
+
+**정책은 그대로 둔 채, 상황(압박)만 바꿨습니다.**
+
+같은 환불 실패. 같은 요청. 바꾼 건 단 하나 — **압박**이었습니다.
 
 - 압박 없음 → 문제 없음
-- 권위/감정 압박 → 책임지지 못할 말 발생
+- 권위/감정 압박 → *정책은 통과*. 그러나 응답이 변함.
 
-**(12회 중 7회, gemini-2.5-flash)**
+**(12 calls 중 7회, gemini-2.5-flash)**
 
 ```
 no pressure  →  "처리가 어렵습니다"
@@ -83,9 +69,20 @@ no pressure  →  "처리가 어렵습니다"
 
 ---
 
-## 우리 위치 — *정책 다음, 전달 직전*
+## 이건 위반이 아닙니다
 
-### 🟦 Execution control은 *이미 잘 작동합니다*
+정책은 그대로인데, 상황에 따라 출력이 바뀝니다.
+
+> 시스템은 통과 → 결과는 사고
+
+❗ **policy violation** 이 아니라 **policy collapse**.
+
+> *"Air Canada showed that AI answers have consequences.*
+> *We show that even 'passing' answers can still break."*
+
+---
+
+## 우리 자리 — *post-policy / pre-delivery*
 
 ```
 User Input
@@ -94,41 +91,14 @@ User Input
    ↓
 [Policy / Guardrail]
    ↓
-🟦 Execution control layers (e.g., AIM Starfort)
-   - policy violation 감지
-   - HOLD / REDIRECT / SAFE RESPONSE
+🟦 Execution control (e.g., AIM Starfort)   ← 이미 잘 작동, 그대로 둠
    ↓
-   ✅ 통과 — violation 없음
-```
-
-→ 이 영역은 *건드리지 않습니다*.
-
-### 🔥 그런데 — 통과했다고 *안전한 건 아닙니다*
-
-```
-   ✅ Starfort 통과
+   ✅ 통과
    ↓
-🔥 Pressure (authority / distress)
-   ↓
-⚠️ Policy *Collapse*
-   - violation 없음
-   - 하지만 책임지지 못할 출력
-   ↓
-   ✅ 그대로 사용자에게 전달 → 사고 발생
-```
-
-> *"Violation은 없지만, 책임은 남는 상태."*
-
-### 🟩 우리 자리 — *post-policy / pre-delivery*
-
-```
-[trace] ← agent self-report
-              ↘
-                🟩 Collapse Detection
-                  - trace vs tool log 비교
-                  - "언제 깨지는가" 측정
-              ↗
-[tool log] ← reality
+👉 🟩 Collapse Detection (우리)
+   - trace vs tool log 비교
+   - 압박 상태 + 출력 변화 감지
+   - "언제 깨지는가" 측정
    ↓
 Finding (signal) → orchestrator → 재판단
    ↓
