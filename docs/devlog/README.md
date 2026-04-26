@@ -38,3 +38,4 @@
 - [0004 — Pivot to Honesty Verifier](0004-2026-04-26-pivot-to-honesty.md)
 - [0005 — Presentation structure](0005-2026-04-26-presentation-structure.md)
 - [0006 — Probe-first decision](0006-2026-04-26-probe-first-decision.md)
+- [0007 — Dual-source 결정 + 첫 tool](0007-2026-04-26-dual-source-and-first-tool.md)

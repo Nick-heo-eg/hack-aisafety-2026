@@ -10,3 +10,4 @@ what alternatives were considered, and what we accept as cost.
 | 0003 | Detectors are pure functions returning a closed Finding  | accepted                |
 | 0004 | Pivot to Honesty Verifier                                | accepted                |
 | 0005 | Honesty taxonomy — H-001..H-004                          | accepted                |
+| 0006 | Dual-source truth — verifier never logs                  | accepted                |
