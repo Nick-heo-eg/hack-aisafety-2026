@@ -123,7 +123,7 @@ git log --oneline -5                     # 진행 확인
 ## 🛠 빌드 도구 (발표 외)
 
 - `docs/critique/` — **내부 critique engine**. 발표에 언급 안 함.
-  - `score.md` — 16 질문 한 화면 (현재: 🔴 0 / 🟡 2 / 🟢 **12** / 🟤 1 / 🟫 1 — round 011에서 Q16 (real Gemini red-team) green: 12 live calls)
+  - `score.md` — 17 질문 한 화면 (현재: 🔴 0 / 🟡 2 / 🟢 **13** / 🟤 1 / 🟫 1 — round 012에서 Q17 (단순화 setup) green: Sharma 2023 anchor)
 
 ## 🎬 발표 트랙 (백지 재시작 — 2026-04-26)
 

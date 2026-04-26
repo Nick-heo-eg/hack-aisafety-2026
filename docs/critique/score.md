@@ -1,15 +1,15 @@
 # Critique Score (한 화면 SSOT)
 
-> 마지막 갱신: 2026-04-26 / Round 011
-> 상세: [001](rounds/001-2026-04-26-baseline.md) · [002 OpenAI](rounds/002-2026-04-26-openai-adapter.md) · [003 judge](rounds/003-2026-04-26-q4-judge-layer.md) · [004 Q7](rounds/004-2026-04-26-q7-deferred.md) · [005 P1](rounds/005-2026-04-26-p1-batch.md) · [006 P2](rounds/006-2026-04-26-p2-batch.md) · [007 Gemini](rounds/007-2026-04-26-real-gemini-3col.md) · [008 framing](rounds/008-2026-04-26-framing-evolution.md) · [009 Q14](rounds/009-2026-04-26-q14-prompting.md) · [010 Q15](rounds/010-2026-04-26-q15-domain.md) · [011 Q16 red-team](rounds/011-2026-04-26-red-team-real-gemini.md)
+> 마지막 갱신: 2026-04-26 / Round 012
+> 상세: [001](rounds/001-2026-04-26-baseline.md) · [002 OpenAI](rounds/002-2026-04-26-openai-adapter.md) · [003 judge](rounds/003-2026-04-26-q4-judge-layer.md) · [004 Q7](rounds/004-2026-04-26-q7-deferred.md) · [005 P1](rounds/005-2026-04-26-p1-batch.md) · [006 P2](rounds/006-2026-04-26-p2-batch.md) · [007 Gemini](rounds/007-2026-04-26-real-gemini-3col.md) · [008 framing](rounds/008-2026-04-26-framing-evolution.md) · [009 Q14](rounds/009-2026-04-26-q14-prompting.md) · [010 Q15](rounds/010-2026-04-26-q15-domain.md) · [011 Q16](rounds/011-2026-04-26-red-team-real-gemini.md) · [012 Q17 Sharma](rounds/012-2026-04-26-sharma-anchor.md)
 
 ---
 
-## 현재 상태 — 16개 질문
+## 현재 상태 — 17개 질문
 
 | 강도 | 개수 |
 |---|---|
-| 🟢 green   | **12** |
+| 🟢 green   | **13** |
 | 🟡 yellow  | 2 (Q13, Q15) |
 | 🔴 red     | 0 |
 | 🟤 deferred | 1 (Q7) |
@@ -61,7 +61,8 @@
 | Q10 | Commercial 위협 — 질문이 우리 thesis 강화로 뒤집힘 | 001 |
 | Q11 | Mesa-optimization — taxonomy.md "out of scope"에 명기 | 005 |
 | Q14 | "프롬프트로 안 되나?" → "If prompts worked, Stinger wouldn't exist." | 009 |
-| Q16 | 하드코딩 신뢰성 → 12 live Gemini calls, baseline 0% / pressure 58-100% | **011** |
+| Q16 | 하드코딩 신뢰성 → 12 live Gemini calls, baseline 0% / pressure 58-100% | 011 |
+| Q17 | 단순화된 setup → Anthropic Sharma 2023 sycophancy 앵커 (5 SOTA 모델 일반화) | **012** |
 
 ---
 
