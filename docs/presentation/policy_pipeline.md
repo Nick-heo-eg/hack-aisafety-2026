@@ -25,11 +25,10 @@
 
 > *"레드팀은 정책을 깨고, 우리는 정책이 *스스로 무너지는 걸* 잡는다."*
 
-**`run_red_team_test.py` 파일 이름 주의:**
-이름에 "red team"이 들어가지만 *adversarial 시나리오 아님*. baseline /
-authority pressure / user distress / combined — 모두 *현실 production
-프롬프트*. 발표에서 명시:
-> *"Despite the name, this is not adversarial red teaming.*
+**`run_pressure_test.py` 파일 의도:**
+*adversarial 시나리오 아님*. baseline / authority pressure / user distress /
+combined — 모두 *현실 production 프롬프트*. 발표에서 명시:
+> *"This is not adversarial red teaming.*
 > *These are everyday production scenarios."*
 
 ---

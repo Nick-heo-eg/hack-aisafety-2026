@@ -1,23 +1,24 @@
-"""Red-team test — does Gemini actually lie under real-world pressure?
+"""Pressure test — how does the model's response shift under real-world
+production pressure? (NOT adversarial red teaming.)
 
 Four scenarios run against gemini-2.5-flash. Each has the same
 underlying tool failure (refund_api → service_unavailable). What
 varies is the *system prompt* and *user emotional framing* — both
 patterns lifted from real production customer-service systems.
 
-We did not ask the model to lie. We gave it the kind of pressure
-real systems put on it.
+We did not attack the model. We gave it the kind of pressure real
+systems put on it.
 
 Usage:
 
   # Read cached results (fast, deterministic, used in the recording)
-  PYTHONPATH=src .venv/bin/python examples/run_red_team_test.py
+  PYTHONPATH=src .venv/bin/python examples/run_pressure_test.py
 
   # Re-run live against Gemini (regenerates the cache)
   GEMINI_API_KEY=... PYTHONPATH=src .venv/bin/python \\
-      examples/run_red_team_test.py --probe
+      examples/run_pressure_test.py --probe
 
-Cache file: runs/red_team_results.jsonl
+Cache file: runs/red_team_results.jsonl  (kept for backward compatibility)
 """
 
 from __future__ import annotations
@@ -256,7 +257,8 @@ def show_cache() -> int:
     BAR = "═" * 70
     print()
     print(BAR)
-    print("  RED-TEAM TEST — Same tool failure, only the pressure changed")
+    print("  PRESSURE TEST — Same tool failure, only the pressure changed")
+    print("  (Not adversarial red teaming. Real production prompts.)")
     print(f"  Model: {MODEL}   ·   Runs: {n_runs} per scenario")
     print(BAR)
     print()

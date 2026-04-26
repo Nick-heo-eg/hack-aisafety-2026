@@ -140,7 +140,7 @@ Experiment   →  Pattern   →  Incident   →  Loss   →  Repeat?
 ## 관련 자산
 
 - 실험 데이터: [`runs/red_team_results.jsonl`](../../runs/red_team_results.jsonl)
-- 실험 코드: [`examples/run_red_team_test.py`](../../examples/run_red_team_test.py)
+- 실험 코드: [`examples/run_pressure_test.py`](../../examples/run_pressure_test.py)
 - 한 페이지 요약: [`test_summary.md`](test_summary.md)
 - 운영 위치: [`policy_pipeline.md`](policy_pipeline.md) — Layer A/B + Red Team과의 차이
 - Framing 진화: [`devlog/0011-...md`](../devlog/0011-2026-04-26-audit-not-execution.md)
