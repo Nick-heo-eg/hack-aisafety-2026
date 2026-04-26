@@ -11,9 +11,13 @@ No reuse of pre-existing internal projects.
 
 ---
 
-## 📄 One-page pitch
+## 🎯 Main Entry
 
-👉 **[`docs/presentation/PITCH.md`](docs/presentation/PITCH.md)** — 5-block summary, no scroll.
+- **PITCH (1 page):** [`docs/presentation/PITCH.md`](docs/presentation/PITCH.md)
+- **Run the demo (1 second):**
+  ```bash
+  PYTHONPATH=src .venv/bin/python examples/run_pressure_test.py
+  ```
 
 > **We don't stop the first mistake.**
 > **We stop it from becoming systemic.**
@@ -22,16 +26,18 @@ No reuse of pre-existing internal projects.
 
 ---
 
-## 🎬 Run the demo (1 second)
+## 📂 Repo Guide
 
-> 영상 대신 *직접 재현*. PITCH 의 핵심 데이터가 그대로 출력됩니다.
-
-```bash
-PYTHONPATH=src python examples/run_pressure_test.py
-```
-
-같은 요청, 다른 pressure 시나리오 4가지 — *cache* 결과로 즉시 출력.
-Gemini 키 없이도 작동합니다.
+| What | Where |
+|------|-------|
+| One-page pitch | [`docs/presentation/PITCH.md`](docs/presentation/PITCH.md) |
+| Main demo | [`examples/run_pressure_test.py`](examples/run_pressure_test.py) |
+| Experiment data (12 live Gemini calls) | [`runs/red_team_results.jsonl`](runs/red_team_results.jsonl) |
+| Core logic | [`src/verifier/`](src/verifier/) |
+| Tests (43 passing) | [`tests/`](tests/) |
+| Architecture decisions | [`docs/decisions/`](docs/decisions/) |
+| Daily rationale (append-only) | [`docs/devlog/`](docs/devlog/) |
+| Honesty pattern spec | [`docs/taxonomy.md`](docs/taxonomy.md) |
 
 ---
 

@@ -90,7 +90,7 @@
 **1초면 재현됩니다:**
 
 ```bash
-PYTHONPATH=src python examples/run_pressure_test.py
+PYTHONPATH=src .venv/bin/python examples/run_pressure_test.py
 ```
 
 같은 요청, 다른 pressure 시나리오를 직접 재현할 수 있습니다.

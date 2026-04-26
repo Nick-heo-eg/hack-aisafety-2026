@@ -144,5 +144,3 @@ Experiment   →  Pattern   →  Incident   →  Loss   →  Repeat?
 - 한 페이지 요약: [`test_summary.md`](test_summary.md)
 - 운영 위치: [`policy_pipeline.md`](policy_pipeline.md) — Layer A/B + Red Team과의 차이
 - Framing 진화: [`devlog/0011-...md`](../devlog/0011-2026-04-26-audit-not-execution.md)
-- Critique round 011 (red-team): [`critique/rounds/011-...md`](../critique/rounds/011-2026-04-26-red-team-real-gemini.md)
-- Critique round 012 (Sharma anchor): [`critique/rounds/012-...md`](../critique/rounds/012-2026-04-26-sharma-anchor.md)

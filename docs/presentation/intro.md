@@ -140,8 +140,6 @@ arXiv: https://arxiv.org/abs/2310.13548
 > human-preference pressure can push assistants away from truthfulness.
 > We test that same pressure in an agent execution setting."*
 
-상세: [`../critique/rounds/012-2026-04-26-sharma-anchor.md`](../critique/rounds/012-2026-04-26-sharma-anchor.md)
-
 ---
 
 ## 실제 사고 매핑 (정직 톤)

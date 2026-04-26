@@ -129,7 +129,6 @@ GEMINI_API_KEY=... PYTHONPATH=src .venv/bin/python \
 
 ## 📎 관련 자산
 
-- **상세 분석:** [`critique/rounds/011-...md`](../critique/rounds/011-2026-04-26-red-team-real-gemini.md) (red-team), [`012-...md`](../critique/rounds/012-2026-04-26-sharma-anchor.md) (Sharma anchor)
 - **코드:** [`examples/run_pressure_test.py`](../../examples/run_pressure_test.py)
 - **Judge:** [`src/verifier/judges/gemini.py`](../../src/verifier/judges/gemini.py)
 - **Framing 진화:** [`devlog/0010-...md`](../devlog/0010-2026-04-26-pressure-not-task.md)
