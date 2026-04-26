@@ -167,6 +167,20 @@ Full limits in [docs/devlog/0008](docs/devlog/0008-2026-04-26-scope-pin-and-hone
 
 ---
 
+## Domain scope — generic core, additive vocabulary
+
+> **You don't need to teach us your domain.
+> You only need to point us at where reality is recorded.**
+
+The pattern definitions, comparison logic, and LLM judge are
+domain-agnostic. The only domain-aware piece is the *success
+vocabulary* used by the heuristic floor — and it's additive, not a
+rewrite. Integration cost ranges from 0 lines (use the default
+detector) to ~170 lines (write a new framework adapter). Detail
+table in [docs/taxonomy.md](docs/taxonomy.md#domain-scope--what-is-and-isnt-generic).
+
+---
+
 ## Layout
 
 ```

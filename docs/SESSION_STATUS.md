@@ -123,7 +123,7 @@ git log --oneline -5                     # 진행 확인
 ## 🛠 빌드 도구 (발표 외)
 
 - `docs/critique/` — **내부 critique engine**. 발표에 언급 안 함.
-  - `score.md` — 14 질문 한 화면 (현재: 🔴 0 / 🟡 1 (Q13) / 🟢 **11** / 🟤 1 / 🟫 1 — round 009에서 Q14 (prompting defense) green 추가)
+  - `score.md` — 15 질문 한 화면 (현재: 🔴 0 / 🟡 **2** (Q13, Q15) / 🟢 11 / 🟤 1 / 🟫 1 — round 010에서 Q15 (domain scope) yellow 등록)
   - `questions.jsonl` — 질문 카탈로그
   - `rounds/001-...md` — Round 1 baseline 진단
   - 다음 세션 회복 시 `score.md` 먼저 읽기

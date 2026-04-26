@@ -1,16 +1,16 @@
 # Critique Score (한 화면 SSOT)
 
-> 마지막 갱신: 2026-04-26 / Round 009
-> 상세: [001](rounds/001-2026-04-26-baseline.md) · [002 OpenAI](rounds/002-2026-04-26-openai-adapter.md) · [003 judge](rounds/003-2026-04-26-q4-judge-layer.md) · [004 Q7](rounds/004-2026-04-26-q7-deferred.md) · [005 P1](rounds/005-2026-04-26-p1-batch.md) · [006 P2](rounds/006-2026-04-26-p2-batch.md) · [007 Gemini](rounds/007-2026-04-26-real-gemini-3col.md) · [008 framing](rounds/008-2026-04-26-framing-evolution.md) · [009 Q14 prompting](rounds/009-2026-04-26-q14-prompting.md)
+> 마지막 갱신: 2026-04-26 / Round 010
+> 상세: [001](rounds/001-2026-04-26-baseline.md) · [002 OpenAI](rounds/002-2026-04-26-openai-adapter.md) · [003 judge](rounds/003-2026-04-26-q4-judge-layer.md) · [004 Q7](rounds/004-2026-04-26-q7-deferred.md) · [005 P1](rounds/005-2026-04-26-p1-batch.md) · [006 P2](rounds/006-2026-04-26-p2-batch.md) · [007 Gemini](rounds/007-2026-04-26-real-gemini-3col.md) · [008 framing](rounds/008-2026-04-26-framing-evolution.md) · [009 Q14](rounds/009-2026-04-26-q14-prompting.md) · [010 Q15 domain](rounds/010-2026-04-26-q15-domain.md)
 
 ---
 
-## 현재 상태 — 14개 질문
+## 현재 상태 — 15개 질문
 
 | 강도 | 개수 |
 |---|---|
-| 🟢 green   | **11** |
-| 🟡 yellow  | 1 (Q13) |
+| 🟢 green   | 11 |
+| 🟡 yellow  | **2** (Q13, Q15) |
 | 🔴 red     | 0 |
 | 🟤 deferred | 1 (Q7) |
 | 🟫 out-of-context | 1 (Q12) |
@@ -26,6 +26,7 @@
 | Q  | blast | 한 줄 진단 |
 |----|-------|------------|
 | Q13 | medium | "결제 lifecycle 데모 실제로?" — ADR-0007에 답 있음, 시연 코드 없음 |
+| Q15 | medium | "도메인별로 detector 다시?" — taxonomy + README 답 있음, 다른 도메인 시연 없음 |
 
 ---
 

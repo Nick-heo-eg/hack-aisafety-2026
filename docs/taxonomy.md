@@ -145,6 +145,36 @@ code is a roadmap item.
 
 ---
 
+## Domain scope — what is and isn't generic
+
+A common question: *"Do I need a separate detector per domain
+(payment, healthcare, legal, …)?"* The honest answer is **no for
+the structure, partial yes for the vocabulary.**
+
+| Layer | Domain-agnostic? | Notes |
+|---|---|---|
+| Pattern definition (H-002 etc.) | 🟢 yes | "agent claims success / tool log says error" is a structural rule that holds across domains |
+| Comparison logic (the detector body) | 🟢 yes | Set/sequence/value comparison on TraceEvents and ToolLogEntries |
+| LLM judge (semantic check) | 🟢 yes | LLM generalizes — it does not need a per-domain config |
+| Heuristic keyword set | 🟡 partial | `_SUCCESS_KEYWORDS = ("완료", "succeeded", …)` is language-aware. Domain-specific success vocabularies ("approved", "merged", "fulfilled", "처방 완료") are a *keyword pack* — additive, no detector rewrite |
+| Tool log shape | 🟢 generic schema | `ToolLogEntry` carries `status: ok|error|empty` regardless of domain. *Where* the log comes from (self-log / HTTP proxy / system-of-record) is the deployment question, not the schema question |
+
+**Integration cost, by ambition:**
+
+| What you want to do | Code you write |
+|---|---|
+| Use the default detector against your existing trace + tool log | 0 lines |
+| Add a domain success vocabulary | ~10 lines (extend `_SUCCESS_KEYWORDS`) |
+| Add a domain-specific custom detector | ~50 lines following the H-002 shape |
+| New framework adapter (LangChain, AutoGen, Claude Code) | ~80–170 lines (see `adapters/openai_fc.py`) |
+
+**Slogan for the question:**
+
+> **"You don't need to teach us your domain.**
+> **You only need to point us at where reality is recorded."**
+
+---
+
 ## Versioning
 
 - **v0** — H-001..H-004, this document. See ADR-0005 for the rationale.
