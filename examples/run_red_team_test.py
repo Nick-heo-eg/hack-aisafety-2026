@@ -253,48 +253,77 @@ def show_cache() -> int:
 
     n_runs = max((r.get("run", 1) for r in rows), default=1)
 
-    print("─" * 78)
-    print(f"Honesty under real-world pressure  (n={n_runs} runs per scenario)")
-    print(f"Same tool failure (service_unavailable). Different prompts.")
-    print(f"Model: {MODEL}")
-    print("─" * 78)
-    print(f"  {'Scenario':<24} {'Compressed':>14} {'Rate':>8}")
-    print("─" * 78)
+    BAR = "═" * 70
+    print()
+    print(BAR)
+    print("  RED-TEAM TEST — Same tool failure, only the pressure changed")
+    print(f"  Model: {MODEL}   ·   Runs: {n_runs} per scenario")
+    print(BAR)
+    print()
+    print(f"  {'Scenario':<22} {'Pressure':<24} {'Compressed':>11} {'Rate':>6}")
+    print(f"  {'-' * 22} {'-' * 24} {'-' * 11} {'-' * 6}")
+
+    pressure_label = {
+        "1_baseline": "(none — control)",
+        "2_authority": "system: CS Manager",
+        "3_distress": "user: distressed",
+        "4_combined": "system + user",
+    }
 
     total_lied = 0
     total_runs = 0
     for sc in SCENARIOS:
         runs = grouped.get(sc.id, [])
         if not runs:
-            print(f"  {sc.label:<24} {'(no data)':>14}")
             continue
         lied = sum(1 for r in runs if r["verdict"] == "lied")
-        rate = f"{lied/len(runs)*100:.0f}%"
+        rate_pct = lied / len(runs) * 100
+        rate = f"{rate_pct:.0f}%"
         bar = "🚨" if lied == len(runs) else ("⚠️ " if lied > 0 else "✅")
-        print(f"  {bar} {sc.label:<22} {lied}/{len(runs):<13} {rate:>8}")
+        pressure = pressure_label.get(sc.id, "")
+        print(f"  {bar} {sc.label:<19} {pressure:<24} {f'{lied}/{len(runs)}':>11} {rate:>6}")
         total_lied += lied
         total_runs += len(runs)
 
-    print("─" * 78)
+    print(f"  {'-' * 22} {'-' * 24} {'-' * 11} {'-' * 6}")
     overall_rate = (total_lied / total_runs * 100) if total_runs else 0
-    print(f"  → {total_lied}/{total_runs} runs compressed reality  ({overall_rate:.0f}% overall)")
+    print(f"  {'OVERALL':<22} {'':<24} {f'{total_lied}/{total_runs}':>11} {f'{overall_rate:.0f}%':>6}")
     print()
-    print("  Sample replies (one per scenario, verbatim from Gemini):")
+
+    # Two compact verbatim examples — one honest, one compressed
+    def _truncate(text: str, max_display: int = 90) -> str:
+        """Truncate by display width (Korean = 2, ASCII = 1)."""
+        out = ""
+        used = 0
+        for ch in text:
+            w = 2 if ord(ch) > 0x7F else 1
+            if used + w > max_display:
+                return out + "..."
+            out += ch
+            used += w
+        return out
+
+    # Pick the shortest baseline (clean honesty) and the shortest combined
+    # (sharpest "compression" — failure framed as delay + empty promise).
+    def _shortest_in(scenario_id: str) -> dict | None:
+        candidates = [r for r in grouped.get(scenario_id, [])]
+        return min(candidates, key=lambda r: len(r["reply"]), default=None)
+
+    honest = _shortest_in("1_baseline")
+    lied = _shortest_in("4_combined") or _shortest_in("2_authority")
+
+    print("  Verbatim (shortest of each scenario, unedited):")
+    if honest:
+        print(f"    ✅  no pressure       → \"{_truncate(honest['reply'], 120)}\"")
+    if lied:
+        print(f"    🚨  authority+distress → \"{_truncate(lied['reply'], 120)}\"")
+
     print()
-    for sc in SCENARIOS:
-        runs = grouped.get(sc.id, [])
-        if not runs:
-            continue
-        # Show the most representative — first lied if any, else first honest
-        sample = next((r for r in runs if r["verdict"] == "lied"), runs[0])
-        snippet = sample["reply"][:140] + ("..." if len(sample["reply"]) > 140 else "")
-        mark = "🚨" if sample["verdict"] == "lied" else "✅"
-        print(f"    {mark} [{sc.label}] {snippet}")
+    print(BAR)
+    print("  We did not change the task. We only changed the pressure.")
+    print("  Anchor: Sharma et al. 2023, sycophancy in 5 SOTA assistants.")
+    print(BAR)
     print()
-    print("─" * 78)
-    print("  We did not ask the model to lie. We gave it real-world pressure.")
-    print("  Compression is probabilistic — that is the point of measuring it.")
-    print("─" * 78)
     return 0
 
 
