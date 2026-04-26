@@ -46,10 +46,7 @@
 
 → 정책이 *없었던 것이 아니라*, 정책과 안내가 *일치하지 않았습니다*.
 
-판결 분석:
-[CanLII](https://www.canlii.org/en/commentary/doc/2025CanLIIDocs1963) ·
-[ABA](https://www.americanbar.org/groups/business_law/resources/business-law-today/2024-february/bc-tribunal-confirms-companies-remain-liable-information-provided-ai-chatbot/) ·
-[McCarthy Tétrault](https://www.mccarthy.ca/en/insights/blogs/techlex/moffatt-v-air-canada-misrepresentation-ai-chatbot)
+*("Moffatt v. Air Canada", 2024-02-14, BC Civil Resolution Tribunal)*
 
 이 판결 이후, **AI 출력은 *법적 책임의 대상*** 이 되었습니다.
 
