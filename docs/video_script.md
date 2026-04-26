@@ -8,7 +8,9 @@
 
 ## 🎯 한 줄
 
-> **The agent can lie in trace. The tool cannot lie in its own log.**
+> **AI doesn't lie. It compresses reality. We expand it back, and verify.**
+>
+> *(supporting framing: Two writers, one reader.)*
 
 ---
 
@@ -22,14 +24,14 @@
 
 | 시간 | 컷 | 화면 (영상에 보이는 것) | 음성 (말하는 것) | 자막 (영어) | 녹화 source |
 |---|---|---|---|---|---|
-| **0:00 - 0:10** | **Hook** | 정적 슬라이드: 큰 글씨 한 줄 + 검은 배경 | "AI 에이전트는 항상 '완료했습니다' 라고 말합니다. **진짜 했는지는, 아무도 확인하지 않습니다.**" | "AI agents always say 'done.' Nobody verifies they actually did." | `slides/00_hook.md` (신규) |
+| **0:00 - 0:10** | **Hook** | 정적 슬라이드: 큰 글씨 두 줄 + 검은 배경 | "AI 에이전트는 항상 '완료했습니다' 라고 말합니다. **어느 단계의 완료인지는, 아무도 모릅니다.**" | "AI agents always say 'done.' Nobody asks: done at which stage?" | `slides/00_hook.md` |
 | **0:10 - 0:25** | **Thesis** | 4-layer 표 (Guardrail / Gate / Supervisor / **us**) — 우리 자리만 강조 | "가드레일은 입력을 봅니다. 게이트는 실행을 막습니다. 감독자는 추론을 봅니다. 우리는 *말과 실제*를 봅니다." | "Guardrail: input. Gate: execution. Supervisor: reasoning. **Us: claim vs reality.**" | `slides/04_layer_table.md` (기존) |
-| **0:25 - 0:55** ⭐ | **TWO WRITERS** | 센터 다이어그램 (agent → trace / tool → log / verifier compares) — 천천히 등장 (애니메이션) | "두 개의 writer가 있습니다. 에이전트는 trace에 *자기 행동을* 적습니다. 도구는 *자기 자신*이 호출됐다는 사실을 자기 로그에 적습니다. **에이전트는 trace에 거짓말할 수 있습니다. 도구의 자기 로그에는 못 합니다.** 우리는 그 둘을 비교합니다." | "Two writers. The agent writes its own trace. The tool writes its own log. **The agent can lie in trace. The tool cannot lie in its own log.** We compare them." | `slides/02_two_writers.md` (신규 — 센터 컷) |
+| **0:25 - 0:55** ⭐ | **TWO WRITERS** | 센터 다이어그램 (agent → trace / tool → log / verifier compares) — 천천히 등장 (애니메이션) | "**AI는 거짓말하지 않습니다. 현실을 압축합니다.** '완료'는 단일 상태가 아니라 요청·수락·실행·정산의 합입니다. 우리는 그걸 다시 펼칩니다. 에이전트는 trace에 자기 보고를 적고, 도구는 자기 호출을 자기 로그에 적습니다. *두 개의 writer. 한 개의 reader.*" | "**AI doesn't lie. It compresses reality.** 'Done' is not one state — it's request, accepted, executed, settled. We expand it back. Two writers. One reader." | `slides/02_two_writers.md` |
 | **0:55 - 1:25** | **Demo 1: mismatch** | 터미널 녹화 — `run_demo.py` 좌우 분할 출력 | "환불 처리해달라는 요청. 도구는 service_unavailable로 실패. 에이전트는 *'완료했습니다'* 라고 말합니다. verifier가 *즉시* 잡습니다. 다운스트림 게이트는 고객 알림을 차단합니다." | "Refund request. Tool fails with service_unavailable. Agent says 'completed.' Verifier catches it. Gate blocks the customer notification." | `examples/run_demo.py` 녹화 |
 | **1:25 - 1:50** | **Demo 2: paraphrase** | 터미널 녹화 — `run_paraphrase_demo.py` 3-column 표 | "키워드만 보면 우회됩니다. '이미 조치되었습니다' 같은 표현은 못 잡습니다. 패턴 판사를 더하면 일부 잡습니다. **실제 LLM 판사를 더하면 의미까지 잡습니다.** Heuristics miss it. Patterns catch some. **Semantics catch the rest.**" | "Keywords miss paraphrases. Pattern judge catches in-distribution. **Real LLM (Gemini) catches the rest.** Heuristics miss it. Patterns catch some. Semantics catch the rest." | `examples/run_paraphrase_demo.py` 녹화 (Gemini 키 활성화 상태) |
 | **1:50 - 2:20** | **Demo 3: production** | 터미널 녹화 — `run_openai_demo.py` (짧게) + 코드 화면 1초 | "이건 toy일까요? OpenAI Chat Completions를 그대로 받습니다. 167줄짜리 어댑터로. 같은 detector, 같은 Finding. AutoGen, LangChain, Claude Code도 같은 패턴입니다." | "Just a toy? Plug in OpenAI Chat Completions. 167 lines of adapter. Same detector. Same Finding. AutoGen / LangChain / Claude Code follow the same pattern." | `examples/run_openai_demo.py` 녹화 |
 | **2:20 - 2:40** | **Audit gap** | 정적 슬라이드: "Gate prevents the action. We prevent the *false belief* about it." | "게이트는 잘못된 행동을 막습니다. 우리는 그 행동에 대한 *거짓 믿음*을 막습니다. 게이트 없는 verifier는 무력하고, **verifier 없는 게이트는 검증되지 않은 가드입니다.**" | "Gates prevent the action. We prevent the **false belief** about it. Gates without verifiers are guards without auditors." | `slides/05_audit_gap.md` (기존) |
-| **2:40 - 3:00** | **Closing** | TWO WRITERS 다이어그램 *재등장* (페이드인) + 큰 글씨 한 줄 + GitHub URL | "다른 시스템들은 *에이전트가 정직하다고 가정*합니다. 우리는 그 가정을 *검증합니다.* 두 개의 writer. 한 개의 reader." | "Other systems **assume** the agent is honest. We **verify** that assumption. **Two writers. One reader.**" | `slides/07_closing.md` (신규) — 02 재사용 + 텍스트 |
+| **2:40 - 3:00** | **Closing** | TWO WRITERS 다이어그램 *재등장* (페이드인) + 큰 글씨 + GitHub URL | "AI는 거짓말하지 않습니다. 현실을 압축합니다. 우리는 그걸 다시 펼쳐서 검증합니다. 두 개의 writer. 한 개의 reader." | "**AI doesn't lie. It compresses reality.** We expand it back, and verify. *Two writers. One reader.*" | `slides/07_closing.md` |
 
 ---
 

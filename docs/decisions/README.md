@@ -11,3 +11,4 @@ what alternatives were considered, and what we accept as cost.
 | 0004 | Pivot to Honesty Verifier                                | accepted                |
 | 0005 | Honesty taxonomy — H-001..H-004                          | accepted                |
 | 0006 | Dual-source truth — verifier never logs                  | accepted                |
+| 0007 | Stage compression (H-005) — future extension              | proposed (v0 msg-only)  |

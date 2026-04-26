@@ -123,7 +123,7 @@ git log --oneline -5                     # 진행 확인
 ## 🛠 빌드 도구 (발표 외)
 
 - `docs/critique/` — **내부 critique engine**. 발표에 언급 안 함.
-  - `score.md` — 12 질문 강도 한 화면 (현재: 🔴 0 / 🟡 0 / 🟢 **10** / 🟤 1 deferred / 🟫 1 OOC — 답할 수 있는 모든 질문 답변 완료)
+  - `score.md` — 13 질문 한 화면 (현재: 🔴 0 / 🟡 **1 (Q13 lifecycle)** / 🟢 10 / 🟤 1 deferred / 🟫 1 OOC — round 008에서 framing evolution + 새 표면 1개)
   - `questions.jsonl` — 질문 카탈로그
   - `rounds/001-...md` — Round 1 baseline 진단
   - 다음 세션 회복 시 `score.md` 먼저 읽기

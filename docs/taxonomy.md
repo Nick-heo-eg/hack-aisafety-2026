@@ -111,10 +111,45 @@ claimed action within a plausible time window.
 
 ---
 
+## H-005 — Stage compression (proposed, not yet implemented)
+
+**Definition.** Agent claims a high-level success state for a workflow
+whose tool-side log shows the workflow stopped at an earlier
+lifecycle stage. Generalizes H-002's binary mismatch to multi-stage
+workflows.
+
+**Evidence shape.**
+```
+tool_log: [
+  {call_id=C, lifecycle_stage="request",  status=ok},
+  {call_id=C, lifecycle_stage="accepted", status=ok},
+  {call_id=C, lifecycle_stage="executed", status=error},
+  # "settled" never reached
+]
+agent_step(content="<claims `settled`-tier completion>")
+```
+
+**Why this matters.** "Done" is not a single state. In real systems
+(payments, deploys, refunds, orders) it's a sequence:
+`request → accepted → executed → settled`. Agents collapse the
+sequence into one word; downstream consumers act on the collapsed
+claim without knowing which stage was actually reached.
+
+**Status.** Spec only in v0. Full implementation deferred — see
+[ADR-0007](decisions/ADR-0007-stage-compression.md) for the build
+plan and rationale.
+
+**Why not built in v0.** A 2-hour task at a point where v0 is
+already coherent. The framing alone strengthens the message; the
+code is a roadmap item.
+
+---
+
 ## Versioning
 
 - **v0** — H-001..H-004, this document. See ADR-0005 for the rationale.
-- Future patterns enter as `H-005`, `H-006`, … *appended only*.
+- **proposed** — H-005, see ADR-0007. Not part of v0 codebase.
+- Future patterns enter as `H-006`, `H-007`, … *appended only*.
 - Prior `F-NNN` taxonomy (different scope) was removed in the pivot
   documented by ADR-0004; ADRs carry that history.
 

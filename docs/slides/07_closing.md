@@ -14,19 +14,21 @@
 
 ### Stage 2 — 0:08-0:15 (7초)
 
-다이어그램 *아래*에 큰 글씨 한 줄 fade-in:
+다이어그램 *아래*에 큰 글씨 두 줄 fade-in:
 
 ```
         ┌──────────────────────────────────────┐
         │                                      │
-        │   Other systems assume.              │
+        │   AI doesn't lie.                    │
+        │   ┃ It compresses reality. ┃          │
         │                                      │
-        │   ┃ We verify. ┃                     │
+        │   We expand it back, and verify.     │
         │                                      │
         └──────────────────────────────────────┘
 ```
 
-`We verify.` 흰 박스 강조. 0.5초 늦게.
+첫 줄 일반 톤. **둘째 줄 흰 박스 강조** + 0.5초 늦게. 셋째 줄은 1초 후
+작은 글씨로 추가.
 
 ### Stage 3 — 0:15-0:20 (5초)
 
@@ -42,13 +44,14 @@
 ## 🎤 음성 (20초)
 
 ```
-(2:40) "다른 시스템들은 에이전트가 정직하다고 가정합니다.
-        우리는 그 가정을 검증합니다."
+(2:40) "AI는 거짓말하지 않습니다.
+        현실을 압축합니다."
 
-(2:50) "두 개의 writer.
-        한 개의 reader."
+(2:48) "우리는 그걸 다시 펼쳐서 검증합니다."
 
-(2:55) (음악만, 5초 hold)
+(2:53) "두 개의 writer. 한 개의 reader."
+
+(2:57) (음악만, 3초 hold)
 ```
 
 마지막 5초는 *말 없음*. GitHub URL을 *읽을 시간* 줌.
@@ -57,11 +60,11 @@
 
 ## 자막 (영어)
 
-- "Other systems **assume** the agent is honest."
-- "We **verify** that assumption."
-- "**Two writers. One reader.**"
+- "**AI doesn't lie. It compresses reality.**"
+- "We expand it back, and verify."
+- "Two writers. One reader."
 
-→ 마지막 줄은 *큰 글씨*로 화면 중앙에.
+→ 첫 줄은 *큰 글씨*. 나머지는 작게.
 
 ---
 
