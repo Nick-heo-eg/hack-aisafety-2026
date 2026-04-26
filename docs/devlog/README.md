@@ -36,3 +36,4 @@
 - [0002 — Trace schema](0002-2026-04-26-trace-schema.md)
 - [0003 — F-001 detector + buggy testbed](0003-2026-04-26-f001-detector-and-testbed.md) *(scope deleted in 0004)*
 - [0004 — Pivot to Honesty Verifier](0004-2026-04-26-pivot-to-honesty.md)
+- [0005 — Presentation structure](0005-2026-04-26-presentation-structure.md)
