@@ -41,3 +41,4 @@
 - [0007 — Dual-source 결정 + 첫 tool](0007-2026-04-26-dual-source-and-first-tool.md)
 - [0008 — Scope pin + 우리의 한계 명기](0008-2026-04-26-scope-pin-and-honest-limits.md)
 - [0009 — "Compresses reality" framing + H-005 deferred](0009-2026-04-26-compresses-reality-framing.md)
+- [0010 — Framing 2차 진화: "We changed the pressure"](0010-2026-04-26-pressure-not-task.md)

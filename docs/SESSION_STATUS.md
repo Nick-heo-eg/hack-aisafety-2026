@@ -133,8 +133,11 @@ git log --oneline -5                     # 진행 확인
 - `docs/demo_script.md.bak` — 30초 멘트 (참고용)
 - `docs/slides.bak/` — 6장 전부 (02 Two Writers 다이어그램만 *후보로* 재활용 검토)
 
-새 트랙: `docs/presentation/` — 현재 비어있음. 다음 세션이 *백지에서* 결정:
-데모 흐름 / 시각 자료 형태 / 발표 매체 / 청중 / 길이 — 모두 미정.
+새 트랙: `docs/presentation/` — **`intro.md` 박힘** (round 011 데이터 + 사용자
+재해석으로 도출된 *발표 출발 framing*). 한 줄: **"We didn't change the task.
+We only changed the pressure."** 매체/길이/시각자료는 여전히 미정.
+
+framing 진화 기록: [`devlog/0010`](devlog/0010-2026-04-26-pressure-not-task.md)
 
 **살아있는 자산:** `examples/run_*.py` 3개 (변경 없음, 43 tests passing).
   - `questions.jsonl` — 질문 카탈로그
