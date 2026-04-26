@@ -11,19 +11,22 @@ No reuse of pre-existing internal projects.
 
 ---
 
-## 🎬 Demo (3-min video)
+## 📄 One-page pitch
+
+👉 **[`docs/presentation/PITCH.md`](docs/presentation/PITCH.md)** — 5-block summary, no scroll.
+
+> **We don't stop the first mistake.**
+> **We stop it from becoming systemic.**
+>
+> *We close the audit gap, not the execution gap.*
+
+---
+
+## 🎬 Demo (video)
 
 > 🎥 _Video: **TBD** — link goes here once uploaded._
 >
 > _Prefer to run it yourself? Skip to **Quick start** below — under 60 seconds._
-
-**What the video shows (3 min):**
-1. The 4-layer position map (Guardrail / Gate / Supervisor / us)
-2. Live demo — agent says "환불 처리를 완료했습니다", tool log says `status: error`,
-   verifier flags H-002, gate hook blocks the downstream effect
-3. The same detector running on a real OpenAI Chat Completions conversation
-4. Heuristic 0 / 4 → +judge 4 / 4 on paraphrased lies
-5. Closing — *"Other systems assume the agent is honest. We verify that assumption."*
 
 ---
 
