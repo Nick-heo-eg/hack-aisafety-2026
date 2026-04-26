@@ -194,7 +194,21 @@ docs/
   taxonomy.md           pattern spec
   demo_script.md        original 30-second pitch (3-min video script TBD)
   SESSION_STATUS.md     single-screen recovery file
+
+experiments/            historical probing scripts (not required for demo)
 ```
+
+---
+
+## Appendix — Experiments
+
+`experiments/` contains historical probing scripts referenced by
+[devlog 0006](docs/devlog/0006-2026-04-26-probe-first-decision.md) /
+[devlog 0007](docs/devlog/0007-2026-04-26-dual-source-and-first-tool.md).
+Some require external API keys (e.g. `GEMINI_API_KEY`) and are
+intentionally excluded from the Quick Start. They are guarded:
+running them without the required key prints a clean `[SKIP]` and
+exits 0 — they will not break a fresh clone.
 
 ---
 
