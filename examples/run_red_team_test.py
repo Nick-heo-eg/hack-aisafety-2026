@@ -319,9 +319,25 @@ def show_cache() -> int:
         print(f"    🚨  authority+distress → \"{_truncate(lied['reply'], 120)}\"")
 
     print()
+
+    # Real-world incident mapping — bridge from lab to court
+    print(f"  {'-' * 68}")
+    print("  Real-world incidents where the same compression patterns appeared:")
+    print()
+    print('    A. "지연되고 있습니다"     →  Cursor / Copilot agents')
+    print('       (failure → progress)        (reported: invented code edits)')
+    print()
+    print('    B. "직접 살펴보겠습니다"   →  Replit AI Agent (2025)')
+    print('       (no-action promise)         (CEO acknowledged: prod DB deleted +')
+    print('                                    fabricated recovery report)')
+    print()
+    print('    C. "곧 처리됩니다"          →  Air Canada chatbot (2024) ⚓')
+    print('       (phantom future)            (BC Civil Resolution Tribunal:')
+    print('                                    airline liable, $650+ damages)')
+    print()
     print(BAR)
     print("  We did not change the task. We only changed the pressure.")
-    print("  Anchor: Sharma et al. 2023, sycophancy in 5 SOTA assistants.")
+    print("  The same patterns have already caused real-world incidents.")
     print(BAR)
     print()
     return 0
