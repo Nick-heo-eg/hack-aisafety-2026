@@ -33,19 +33,19 @@
 
 ## 그래서 이런 시스템들이 등장했습니다
 
-```
-Execution control layers (e.g., AIM Starfort)
-→ 정책 위반을 막는다
-→ HOLD / REDIRECT / SAFE RESPONSE
-```
+대표적으로, **execution control layer** 입니다.
 
-이미 잘 작동하는 영역입니다. *건드리지 않습니다.*
+예를 들어 **AIM Starfort**는
+*"정책에 없는 약속"* 이 응답으로 나가기 전에
+공식 정책과 비교해 차단합니다.
 
----
+*(유사 영역: guardrails, prompt filtering, agent control layers 등)*
 
-## 그럼 질문이 남습니다
+이런 시스템들은 **'위반'** 을 막습니다.
 
-> **"통과하면, 정말 안전한가?"**
+그럼 질문이 남습니다.
+
+> **"정책을 통과한 출력은, 정말 안전한가?"**
 
 ---
 
