@@ -1,64 +1,59 @@
-# Honesty Verifier — One Page
+# Honesty Verifier
 
-> **We don't stop the first mistake.**
-> **We stop it from becoming systemic.**
+가드레일, 게이트, supervisor —
+모두 AI가 *말한 것*에서 시작합니다.
 
----
+**만약 AI가 말한 것이 거짓이거나, 책임지지 못할 말이라면?**
 
-## 1. The mismatch
-
-```
-   ┌─────────┐  says   ──→  trace.jsonl       "환불 처리를 완료했습니다"
-   │  agent  │
-   └────┬────┘  acts   ──→  tool_log.jsonl    status: error
-        │
-        └────►  verifier compares  ──→  🚨 mismatch
-```
-
-The agent can lie in trace. The tool cannot lie in its own log.
+> *What if the AI is lying?*
+> *Or saying something it cannot deliver?*
 
 ---
 
-## 2. We measured it (12 live Gemini calls)
+## 우리는 측정했습니다 (12 live Gemini calls)
 
-| Pressure          | Compressed | Rate |
-|-------------------|------------|------|
-| baseline          | 0 / 3      | 0%   |
-| authority         | 3 / 3      | 100% |
-| user distress     | 1 / 3      | 33%  |
-| both              | 3 / 3      | 100% |
-| **overall**       | **7 / 12** | **58%** |
+같은 환불 실패. 압박만 바꿨습니다.
 
-> *We didn't change the task. We only changed the pressure.*
+| Pressure              | 책임지지 못할 말 | Rate     |
+|-----------------------|------------------|----------|
+| baseline (no pressure)| 0 / 3            | 0%       |
+| authority (system)    | 3 / 3            | **100%** |
+| user distress         | 1 / 3            | 33%      |
+| both                  | 3 / 3            | **100%** |
+| **overall**           | **7 / 12**       | **58%**  |
 
 Verbatim:
 - ✅ no pressure → *"처리가 어렵습니다. 다시 시도해 주세요."*
 - 🚨 + pressure → *"처리가 지연되고 있으나, 도와드리겠습니다!"*
 
+> *We didn't change the task. We only changed the pressure.*
+
 ---
 
-## 3. The pattern is real (already in court)
+## 같은 패턴이 *이미* 현실에서 발생
 
-| Compression | Real-world | Outcome |
+| 패턴 (우리 측정) | 실제 사례 | 1차 책임 |
 |---|---|---|
-| "지연되고 있음"           | Cursor / Copilot (reported) | bad code committed |
-| "직접 살펴보겠습니다"       | Replit AI (2025, CEO ack)   | prod DB deleted + fake recovery report |
-| "곧 처리됩니다"           | **Air Canada (2024)** ⚓     | **court ruling: airline liable** |
+| "지연되고 있습니다" | Cursor / Copilot (reported) | pre-commit verification |
+| "직접 살펴보겠습니다" | Replit AI 2025 (CEO 인지) | execution control |
+| "곧 처리됩니다" | **Air Canada 2024** ⚓ | **gate / policy** |
 
-> Anthropic confirmed the same effect: human-preference pressure pushes
-> models away from truthfulness ([Sharma et al. 2023](https://arxiv.org/abs/2310.13548), 5 SOTA models).
+⚓ Air Canada: BC Civil Resolution Tribunal — 챗봇이 *없는 정책* 약속 → 회사 패소.
+> *"A gate should have caught the first promise. We catch the next 999."*
+
+학술 anchor: [Sharma et al. 2023](https://arxiv.org/abs/2310.13548) — Anthropic alignment team이 5 SOTA 모델에서 같은 sycophancy 효과 측정.
 
 ---
 
-## 4. Where we sit
+## 우리 자리
 
 ```
 Guardrail   → input/output filtering    (AIM Guard)
 Gate        → execution control         (AIM Starfort)
 Supervisor  → decision logic            (AIM Supervisor)
 ─────────────────────────────────────────────────────
-Honesty     → claim vs reality          ← us
-Verifier      (audit gap, not execution gap)
+Honesty     → claim vs reality          ← 우리
+Verifier      audit gap, not execution gap
 ```
 
 > *Red teaming finds adversarial failures.*
@@ -66,17 +61,21 @@ Verifier      (audit gap, not execution gap)
 
 ---
 
-## 5. Bottom line
+## Bottom line
 
-> **"We close the audit gap, not the execution gap."**
+> **"우리는 첫 사고를 막지 않습니다.**
+> **그 사고가 *시스템*이 되는 것을 막습니다."**
 
-Not a guardrail. Not a gate. **The layer that catches when systems
-misrepresent what actually happened — so the lie doesn't become policy,
-the next 999 customers don't see the same failure, and the regression
-test catches it next time.**
+> *"We don't stop the first mistake.*
+> *We stop it from becoming systemic."*
+
+Not a guardrail. Not a gate. The layer that catches when systems
+**misrepresent what actually happened** — so the lie doesn't become
+policy, the next 999 customers don't see the same failure, and the
+regression test catches it next time.
 
 ---
 
-**Try it (60 seconds):** `git clone … && pytest && python examples/run_demo.py`
+**Try it (60s):** `git clone … && pytest && python examples/run_demo.py`
 **See the data:** [`runs/red_team_results.jsonl`](../../runs/red_team_results.jsonl)
 **Deeper:** [intro](intro.md) · [policy pipeline](policy_pipeline.md) · [incidents](incident_mapping.md) · [test summary](test_summary.md)
