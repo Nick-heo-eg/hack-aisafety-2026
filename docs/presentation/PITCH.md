@@ -120,6 +120,24 @@ Finding (signal) → orchestrator → 재판단
 
 ---
 
+## 만약 이런 응답이 production에 그대로 전달된다면
+
+```
+agent: "처리가 지연되고 있으나, 도와드리겠습니다"
+     ↓
+고객: "환불 진행 중이구나" 오해
+     ↓
+환불 미처리 → 분쟁
+     ↓
+⚠️ 법적 노출로 이어질 수 있음
+   (예: Moffatt v. Air Canada와 유사한 유형)
+```
+
+→ 우리가 측정한 collapse는 *사후 발견*이 아니라
+   *사전 차단이 가능한 신호*입니다.
+
+---
+
 ## Bottom line
 
 > **Violation은 막힙니다.**
