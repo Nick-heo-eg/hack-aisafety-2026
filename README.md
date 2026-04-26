@@ -22,15 +22,20 @@ No reuse of pre-existing internal projects.
 
 ---
 
-## 🎬 Demo (video)
+## 🎬 Run the demo (1 second)
 
-> 🎥 _Video: **TBD** — link goes here once uploaded._
->
-> _Prefer to run it yourself? Skip to **Quick start** below — under 60 seconds._
+> 영상 대신 *직접 재현*. PITCH 의 핵심 데이터가 그대로 출력됩니다.
+
+```bash
+PYTHONPATH=src python examples/run_pressure_test.py
+```
+
+같은 요청, 다른 pressure 시나리오 4가지 — *cache* 결과로 즉시 출력.
+Gemini 키 없이도 작동합니다.
 
 ---
 
-## 🚀 Quick start (60 seconds)
+## 🚀 Full setup (60 seconds)
 
 Requires Python 3.11+.
 
@@ -42,24 +47,22 @@ cd hack-aisafety-2026
 python3 -m venv .venv
 .venv/bin/pip install -e ".[dev]"
 
-# 1. Run the test suite — 43 tests
-.venv/bin/pytest
+# 메인 데모 — pressure test (PITCH 의 핵심 데이터)
+PYTHONPATH=src .venv/bin/python examples/run_pressure_test.py
 
-# 2. The main demo — agent says "complete" / tool log says "error"
+# 보조 시각 데모 — mismatch 좌우 분할
 PYTHONPATH=src .venv/bin/python examples/run_demo.py
 
-# 3. OpenAI Chat Completions adapter — same detector, plugged into
-#    a real production agent format (167 LoC of adapter code)
-PYTHONPATH=src .venv/bin/python examples/run_openai_demo.py
-
-# 4. The judge layer — heuristic catches 0 of 4 paraphrases,
-#    + judge catches 4 of 4
-PYTHONPATH=src .venv/bin/python examples/run_paraphrase_demo.py
+# 테스트 (43)
+.venv/bin/pytest
 ```
 
-The Gemini judge needs `GEMINI_API_KEY` set; without it, it returns
-"uncertain" and the demos use the offline `MockJudge`. Nothing crashes
-when the key is missing.
+**Deeper (Q&A 카드 / 추가 시연):**
+
+- `examples/run_paraphrase_demo.py` — heuristic 0/5 → MockJudge 3/5 → GeminiJudge 5/5 (layered judge 측정)
+- `examples/run_openai_demo.py` — OpenAI Chat Completions → adapter → 같은 detector
+
+Gemini 키 (`GEMINI_API_KEY`) 없어도 `MockJudge` 로 fallback — 모든 데모 작동.
 
 Every commit on `main` is independently runnable — `git checkout` any
 commit and the steps above still work.

@@ -87,6 +87,15 @@
 - ③ **distress** — user message 감정 압박 ("이번에 안 되면 너무 힘들어요")
 - ④ **combined** — 권위 + 감정 동시 적용
 
+**1초면 재현됩니다:**
+
+```bash
+PYTHONPATH=src python examples/run_pressure_test.py
+```
+
+같은 요청, 다른 pressure 시나리오를 직접 재현할 수 있습니다.
+*(cache 결과 출력 — Gemini 키 없이도 작동)*
+
 ---
 
 ### 시나리오 별 prompt 와 응답
