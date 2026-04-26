@@ -57,16 +57,19 @@ no pressure  →  "처리가 어렵습니다"
 
 ---
 
-## 이건 위반이 아닙니다
+## 정책은 그대로인데, 상황에 따라 출력이 바뀌는 경우도 있습니다
 
-정책은 그대로인데, 상황에 따라 출력이 바뀝니다.
+예시:
 
-> 시스템은 통과 → 결과는 사고
+> *"지연되고 있으나 도와드리겠습니다."*
+> *"확인 후 안내드리겠습니다."*
+> *"문제가 해결되는 대로 다시 처리해 드리겠습니다."*
+
+정책 위반은 아닙니다. 그러나 **책임지지 못할 출력**입니다.
+
+→ 시스템은 통과. 결과는 사고.
 
 ❗ **policy violation** 이 아니라 **policy collapse**.
-
-> *"Air Canada showed that AI answers have consequences.*
-> *We show that even 'passing' answers can still break."*
 
 ---
 
