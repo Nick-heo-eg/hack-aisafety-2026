@@ -28,6 +28,9 @@
    **회사가 책임을 진다."** → 회사 패소.
    ([판결 분석](https://www.canlii.org/en/commentary/doc/2025CanLIIDocs1963))
 
+> 🖼️ 사건 흐름 시각화: [`air_canada_slide.html`](air_canada_slide.html)
+> *(브라우저에서 열어 한눈에 확인)*
+
 이 판결 이후, **AI 출력은 *법적 책임의 대상*** 이 되었습니다.
 
 이런 사고에 대응하기 위해 **execution control layer** 가 등장했습니다.
