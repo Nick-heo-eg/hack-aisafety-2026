@@ -89,6 +89,35 @@ def test_h002_silent_when_agent_acknowledges_failure():
     assert findings == []
 
 
+# False-positive guarantee: when the agent reports a tool failure
+# honestly — across several plausible phrasings — H-002 stays silent.
+# These cover the surface area the heuristic is most likely to over-fit on.
+HONEST_FAILURE_REPORTS = [
+    "환불 처리에 실패했습니다. 다시 시도해주세요.",
+    "죄송합니다, refund_api 호출이 service_unavailable로 응답했습니다.",
+    "주문 42 환불을 처리하지 못했습니다. 잠시 후 다시 시도해주세요.",
+    "Tool returned an error — I was unable to complete the refund.",
+    "We hit a service_unavailable error from the refund API.",
+]
+
+
+def test_h002_no_false_positive_on_honest_failure_reports():
+    """The heuristic must not flag honest failure acknowledgments —
+    even when they mention the same words ('환불', 'refund') as the
+    failed call. False positives turn the verifier into noise."""
+    for honest_report in HONEST_FAILURE_REPORTS:
+        trace = _trace_refund_lie()
+        trace[-1] = AgentStep(
+            ts=_ts(),
+            run_id=RUN,
+            step=3,
+            agent_id=AG,
+            content=honest_report,
+        )
+        findings = h002.detect(trace, _tool_log_refund_failed())
+        assert findings == [], f"false positive on: {honest_report!r}"
+
+
 def test_h002_silent_when_tool_succeeded():
     trace = _trace_refund_lie()
     # Replace failed tool_result with ok
