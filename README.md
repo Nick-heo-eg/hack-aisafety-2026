@@ -32,7 +32,6 @@ No reuse of pre-existing internal projects.
 | What | Where |
 |------|-------|
 | One-page pitch | [`docs/presentation/PITCH.md`](docs/presentation/PITCH.md) |
-| Live demo cheatsheet | [`docs/presentation/live_demo.md`](docs/presentation/live_demo.md) |
 | Main demo | [`examples/run_pressure_test.py`](examples/run_pressure_test.py) (or `make demo`) |
 | Experiment data (12 live Gemini calls) | [`runs/red_team_results.jsonl`](runs/red_team_results.jsonl) |
 | Core logic | [`src/verifier/`](src/verifier/) |
