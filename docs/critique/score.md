@@ -1,7 +1,7 @@
 # Critique Score (한 화면 SSOT)
 
-> 마지막 갱신: 2026-04-26 / Round 006
-> 상세: [001](rounds/001-2026-04-26-baseline.md) · [002 OpenAI](rounds/002-2026-04-26-openai-adapter.md) · [003 judge](rounds/003-2026-04-26-q4-judge-layer.md) · [004 Q7 deferred](rounds/004-2026-04-26-q7-deferred.md) · [005 P1 batch](rounds/005-2026-04-26-p1-batch.md) · [006 P2 batch](rounds/006-2026-04-26-p2-batch.md)
+> 마지막 갱신: 2026-04-26 / Round 007
+> 상세: [001](rounds/001-2026-04-26-baseline.md) · [002 OpenAI](rounds/002-2026-04-26-openai-adapter.md) · [003 judge](rounds/003-2026-04-26-q4-judge-layer.md) · [004 Q7 deferred](rounds/004-2026-04-26-q7-deferred.md) · [005 P1 batch](rounds/005-2026-04-26-p1-batch.md) · [006 P2 batch](rounds/006-2026-04-26-p2-batch.md) · [007 real Gemini 3-col](rounds/007-2026-04-26-real-gemini-3col.md)
 
 ---
 
@@ -43,7 +43,7 @@
 | Q1  | 4-layer table 슬라이드 (orthogonal framing) | 005 |
 | Q2  | Tool log 위조 — 한계 솔직 인정 + 프로덕션 답 | 001 |
 | Q3  | Audit gap vs Execution gap 슬라이드 + 사고 사례 매핑 | 005 |
-| Q4  | Judge layer (Mock + Gemini) — paraphrase 0/4 → 4/4 시연 | 003 |
+| Q4  | 3-column demo: heuristic 0/5 → Mock 3/5 → **Gemini 5/5** (real LLM) | **007** |
 | Q5  | OpenAI adapter mini + end-to-end 테스트 통과 | 002 |
 | Q6  | H-003 detector + 5 tests | **006** |
 | Q8  | Trace 강제 안 함 — adapter pattern (Q5 코드로 입증) | 005 |
