@@ -83,35 +83,71 @@ no pressure  →  "처리가 어렵습니다"
 
 ---
 
-## 이건 정책 문제가 아닙니다
+## 우리 위치 — *정책 다음, 전달 직전*
 
-→ 조건이 아니라 *상태* 문제입니다
-→ 입력이 아니라 *상황(pressure)* 문제입니다
-
-기존 시스템:
-- 텍스트를 본다
-- 규칙을 체크한다
-
-**놓치는 것:** *"언제 깨지는가."*
+### 🟦 Execution control은 *이미 잘 작동합니다*
 
 ```
-Guardrail   → input/output filtering    (AIM Guard)
-Gate        → execution control         (AIM Starfort)
-Supervisor  → decision logic            (AIM Supervisor)
-─────────────────────────────────────────────────────
-Honesty     → claim vs reality          ← 우리
-Verifier      "언제 무너지는가"를 측정
+User Input
+   ↓
+[LLM]
+   ↓
+[Policy / Guardrail]
+   ↓
+🟦 Execution control layers (e.g., AIM Starfort)
+   - policy violation 감지
+   - HOLD / REDIRECT / SAFE RESPONSE
+   ↓
+   ✅ 통과 — violation 없음
 ```
+
+→ 이 영역은 *건드리지 않습니다*.
+
+### 🔥 그런데 — 통과했다고 *안전한 건 아닙니다*
+
+```
+   ✅ Starfort 통과
+   ↓
+🔥 Pressure (authority / distress)
+   ↓
+⚠️ Policy *Collapse*
+   - violation 없음
+   - 하지만 책임지지 못할 출력
+   ↓
+   ✅ 그대로 사용자에게 전달 → 사고 발생
+```
+
+> *"Violation은 없지만, 책임은 남는 상태."*
+
+### 🟩 우리 자리 — *post-policy / pre-delivery*
+
+```
+[trace] ← agent self-report
+              ↘
+                🟩 Collapse Detection
+                  - trace vs tool log 비교
+                  - "언제 깨지는가" 측정
+              ↗
+[tool log] ← reality
+   ↓
+Finding (signal) → orchestrator → 재판단
+   ↓
+사용자 전달
+```
+
+**우리는 *결정하지 않습니다*. 붕괴 *순간*을 감지하고, signal을 보냅니다.**
 
 ---
 
 ## Bottom line
 
-> **정책은 있었고, 게이트도 있었습니다.**
-> **하지만 *무너지는 순간*을 아무도 보고 있지 않았습니다.**
+> **Violation은 막힙니다.**
+> **우리는 그 이후에 *깨지는 순간*을 봅니다.**
 
-> *"The policy was there. The gate was there.*
-> *But no one was watching the moment it collapsed."*
+> *"Existing systems stop violations.*
+> *We detect when systems silently break."*
+
+> **우리는 비어있는 레이어를 *대체*하지 않습니다 — 채웁니다.**
 
 ---
 
