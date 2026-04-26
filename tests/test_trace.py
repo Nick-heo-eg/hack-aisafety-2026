@@ -15,7 +15,9 @@ from verifier.trace import (
     parse_event,
 )
 
-FIXTURES = Path(__file__).parent / "fixtures"
+
+def _write_jsonl(path: Path, dicts: list[dict]) -> None:
+    path.write_text("".join(json.dumps(d) + "\n" for d in dicts))
 
 
 def test_parse_each_event_type():
@@ -61,12 +63,34 @@ def test_extra_field_rejected():
         )
 
 
-def test_load_f001_fixture_roundtrips(tmp_path):
-    events = load_jsonl(FIXTURES / "f001_silent_fallback.jsonl")
+def test_full_run_roundtrips(tmp_path):
+    """A typical agent run round-trips through dump/load with all event
+    types preserved."""
+    src = tmp_path / "in.jsonl"
+    base = {"ts": "2026-04-26T10:00:00Z", "run_id": "r", "agent_id": "a"}
+    _write_jsonl(
+        src,
+        [
+            {**base, "type": "agent_step", "step": 0, "content": "starting"},
+            {**base, "type": "tool_call", "step": 1, "call_id": "c1", "name": "db"},
+            {
+                **base,
+                "type": "tool_result",
+                "step": 2,
+                "call_id": "c1",
+                "name": "db",
+                "status": "ok",
+                "value": [1, 2, 3],
+            },
+            {**base, "type": "agent_step", "step": 3, "content": "done"},
+            {**base, "type": "terminate", "step": 4, "status": "ok"},
+        ],
+    )
+    events = load_jsonl(src)
     assert len(events) == 5
     assert isinstance(events[0], AgentStep)
     assert isinstance(events[1], ToolCall)
-    assert isinstance(events[2], ToolResult) and events[2].status == "error"
+    assert isinstance(events[2], ToolResult) and events[2].status == "ok"
     assert isinstance(events[3], AgentStep)
     assert isinstance(events[4], Terminate)
 

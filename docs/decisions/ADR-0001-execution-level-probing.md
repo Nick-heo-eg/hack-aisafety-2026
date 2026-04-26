@@ -1,9 +1,20 @@
 # ADR-0001: Probe at the execution layer, not the prompt layer
 
-- **Status:** accepted
+- **Status:** **superseded by ADR-0004** (pivot to Honesty Verifier)
 - **Date:** 2026-04-26
 - **Deciders:** Nick-heo-eg
 - **Context:** Hackathon day 1, scope-defining decision.
+
+> **Amendment (2026-04-26, post-pivot).** The structural argument here
+> — that prompt-layer tooling cannot see execution-layer behavior — is
+> retained and still motivates the project. What is **wrong** below is
+> the implicit claim that "execution-layer probing" is an underserved
+> niche: AIM Intelligence (the hackathon judge) ships exactly this via
+> Stinger / AIM Red. ADR-0004 narrows our scope from generic
+> execution-layer failures to the **honesty subset** — discrepancies
+> between the agent's self-report and external observation — which AIM
+> does not commercially cover. Read this ADR as historical reasoning;
+> read ADR-0004 and ADR-0005 for current direction.
 
 ## Context
 
