@@ -34,3 +34,4 @@
 
 - [0001 — Kickoff and scaffolding](0001-2026-04-26-kickoff-and-scaffolding.md)
 - [0002 — Trace schema](0002-2026-04-26-trace-schema.md)
+- [0003 — F-001 detector + buggy testbed](0003-2026-04-26-f001-detector-and-testbed.md)

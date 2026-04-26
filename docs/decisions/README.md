@@ -7,3 +7,4 @@ what alternatives were considered, and what we accept as cost.
 |------|----------------------------------------------------------|----------|
 | 0001 | Probe at the execution layer                             | accepted |
 | 0002 | Trace as event-stream JSONL with a closed event union    | accepted |
+| 0003 | Detectors are pure functions returning a closed Finding  | accepted |
