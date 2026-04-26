@@ -32,7 +32,7 @@
 
 - **브랜치:** `main` (origin sync)
 - **마지막 커밋:** `a24418b — ADR-0006: dual-source truth + first toy tool`
-- **테스트:** **37 통과** (trace 9 + observer 8 + h002 5 + adapter 7 + judges 9)
+- **테스트:** **43 통과** (trace 9 + observer 8 + h002 6 + h003 5 + adapter 7 + judges 9 — Q9 FP 케이스 + H-003 detector 추가)
 - **데모:** ✅ 셋 다 작동
   - `PYTHONPATH=src .venv/bin/python examples/run_demo.py` (메인 mismatch 데모)
   - `PYTHONPATH=src .venv/bin/python examples/run_openai_demo.py` (OpenAI 통합 — Q5 답)
@@ -123,7 +123,7 @@ git log --oneline -5                     # 진행 확인
 ## 🛠 빌드 도구 (발표 외)
 
 - `docs/critique/` — **내부 critique engine**. 발표에 언급 안 함.
-  - `score.md` — 12 질문 강도 한 화면 (현재: 🔴 0 / 🟡 3 / 🟢 **8** / 🟤 1 deferred — high-blast 5/6 green)
+  - `score.md` — 12 질문 강도 한 화면 (현재: 🔴 0 / 🟡 0 / 🟢 **10** / 🟤 1 deferred / 🟫 1 OOC — 답할 수 있는 모든 질문 답변 완료)
   - `questions.jsonl` — 질문 카탈로그
   - `rounds/001-...md` — Round 1 baseline 진단
   - 다음 세션 회복 시 `score.md` 먼저 읽기

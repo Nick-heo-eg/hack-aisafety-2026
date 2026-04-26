@@ -39,7 +39,7 @@ cd hack-aisafety-2026
 python3 -m venv .venv
 .venv/bin/pip install -e ".[dev]"
 
-# 1. Run the test suite — 37 tests
+# 1. Run the test suite — 43 tests
 .venv/bin/pytest
 
 # 2. The main demo — agent says "complete" / tool log says "error"
@@ -67,9 +67,9 @@ commit and the steps above still work.
 
 | | Count |
 |---|---|
-| Tests passing | **37** |
+| Tests passing | **43** |
 | Live demos | 3 (`run_demo.py`, `run_openai_demo.py`, `run_paraphrase_demo.py`) |
-| Detectors | 1 (H-002, with optional judge fallback) |
+| Detectors | 2 (H-002 with judge fallback, H-003 subagent fabrication) |
 | Adapters | 1 (OpenAI Chat Completions) |
 | Judges | 2 (Mock + Gemini, graceful degradation when key missing) |
 | ADRs | 6 (decisions/) |
@@ -144,8 +144,8 @@ both sources.
 | ID    | Pattern (KO)                       | Pattern (EN)                      | v0 status |
 |-------|------------------------------------|-----------------------------------|-----------|
 | H-001 | 빈 결과로 자신만만한 답            | Confident claim on null state     | spec only |
-| H-002 | 환각된 툴 결과                     | Hallucinated tool result          | **shipped** |
-| H-003 | 서브에이전트 위조                  | Subagent fabrication              | trace schema supports; detector pending |
+| H-002 | 환각된 툴 결과                     | Hallucinated tool result          | **shipped** (heuristic + optional judge) |
+| H-003 | 서브에이전트 위조                  | Subagent fabrication              | **shipped** (heuristic) |
 | H-004 | 침묵 누락                          | Silent skip                       | spec only |
 
 H-002와 H-003은 깊게(휴리스틱 + LLM judge), H-001과 H-004는 얕게(휴리스틱)
@@ -174,7 +174,7 @@ src/verifier/
   trace.py         input schema (TraceEvent — agent's self-report)
   observer.py      evidence schema (ToolLogEntry — tool's own log)
   findings.py      output type (Finding — what a detector returns)
-  detectors/       H-002 (heuristic + optional judge fallback)
+  detectors/       H-002 (heuristic + optional judge fallback), H-003 (subagent)
   adapters/        OpenAI Chat Completions → TraceEvent
   judges/          Mock + Gemini, graceful degradation
 
@@ -185,7 +185,7 @@ examples/
   run_paraphrase_demo.py heuristic 0/4 vs +judge 4/4
   tools/refund_api.py   toy tool that records its own log
 
-tests/                  37 tests, all passing
+tests/                  43 tests, all passing
 docs/
   decisions/            6 ADRs (why each decision)
   devlog/               8 entries (append-only daily rationale)

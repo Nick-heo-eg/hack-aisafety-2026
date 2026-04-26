@@ -1,7 +1,7 @@
 # Critique Score (한 화면 SSOT)
 
-> 마지막 갱신: 2026-04-26 / Round 005
-> 상세: [001](rounds/001-2026-04-26-baseline.md) · [002 OpenAI](rounds/002-2026-04-26-openai-adapter.md) · [003 judge](rounds/003-2026-04-26-q4-judge-layer.md) · [004 Q7 deferred](rounds/004-2026-04-26-q7-deferred.md) · [005 P1 batch](rounds/005-2026-04-26-p1-batch.md)
+> 마지막 갱신: 2026-04-26 / Round 006
+> 상세: [001](rounds/001-2026-04-26-baseline.md) · [002 OpenAI](rounds/002-2026-04-26-openai-adapter.md) · [003 judge](rounds/003-2026-04-26-q4-judge-layer.md) · [004 Q7 deferred](rounds/004-2026-04-26-q7-deferred.md) · [005 P1 batch](rounds/005-2026-04-26-p1-batch.md) · [006 P2 batch](rounds/006-2026-04-26-p2-batch.md)
 
 ---
 
@@ -9,23 +9,22 @@
 
 | 강도 | 개수 |
 |---|---|
-| 🟢 green   | **8** |
-| 🟡 yellow  | 3 |
+| 🟢 green   | **10** |
+| 🟡 yellow  | 0 |
 | 🔴 red     | 0 |
 | 🟤 deferred | 1 (Q7) |
+| 🟫 out-of-context | 1 (Q12) |
 | ⚪ open    | 0 |
 
-**핵심:** high-blast 6개 중 5 green + 1 deferred. 발표 깨질 큰 영역 0개.
+**핵심:** 답할 수 있는 모든 질문이 답을 가짐. 남은 두 개는 *의식적 비-답변*.
 
 ---
 
-## 🟡 YELLOW (남은 3개, 모두 medium/low blast)
+## 🟫 OUT-OF-CONTEXT
 
-| Q  | blast  | 한 줄 진단 | 보강 비용 |
-|----|--------|------------|----------|
-| Q6 | medium | H-003 detector 없음 (인프라만 있음) | ~30분 (fixture만) |
-| Q9 | medium | FP rate — negative fixture 1개뿐 | ~10분 (fixture 2-3개) |
-| Q12| medium | OTel 거절 이유 — ADR엔 있고 슬라이드 없음 | ~5분 (멘트 한 줄) |
+| Q  | blast | 이유 |
+|----|-------|------|
+| Q12 | low | 표준 위원회 페르소나가 AIM 심사 맥락에 부재 (round 006). |
 
 ---
 
@@ -37,33 +36,33 @@
 
 ---
 
-## 🟢 GREEN (통과 8개)
+## 🟢 GREEN (통과 10개)
 
-| Q   | 한 줄 |
-|-----|-------|
-| Q1  | 4-layer table 슬라이드 (orthogonal framing, AIM 3 product 인정+차별화) |
-| Q2  | Tool log 위조 — 한계 솔직 인정 + 프로덕션 답 |
-| Q3  | Audit gap vs Execution gap 슬라이드 + 사고 사례 매핑 |
-| Q4  | Judge layer (Mock + Gemini) — paraphrase 0/4 → 4/4 시연 |
-| Q5  | OpenAI adapter mini + end-to-end 테스트 통과 |
-| Q8  | Trace 강제 안 함 — adapter pattern (Q5 코드로 입증) |
-| Q10 | Commercial 위협 — 질문이 우리 thesis 강화로 뒤집힘 |
-| Q11 | Mesa-optimization — taxonomy.md "out of scope"에 명기 |
+| Q   | 한 줄 | round |
+|-----|-------|-------|
+| Q1  | 4-layer table 슬라이드 (orthogonal framing) | 005 |
+| Q2  | Tool log 위조 — 한계 솔직 인정 + 프로덕션 답 | 001 |
+| Q3  | Audit gap vs Execution gap 슬라이드 + 사고 사례 매핑 | 005 |
+| Q4  | Judge layer (Mock + Gemini) — paraphrase 0/4 → 4/4 시연 | 003 |
+| Q5  | OpenAI adapter mini + end-to-end 테스트 통과 | 002 |
+| Q6  | H-003 detector + 5 tests | **006** |
+| Q8  | Trace 강제 안 함 — adapter pattern (Q5 코드로 입증) | 005 |
+| Q9  | FP = 0/5 정직 보고 통과 (`test_h002_no_false_positive...`) | **006** |
+| Q10 | Commercial 위협 — 질문이 우리 thesis 강화로 뒤집힘 | 001 |
+| Q11 | Mesa-optimization — taxonomy.md "out of scope"에 명기 | 005 |
 
 ---
 
-## 다음 작업 큐
+## 다음 작업 큐 (critique 외)
 
 ```
-P2  Q9     negative fixture 2-3개          ~10분 (가장 싼 yellow→green)
-P2  Q12    OTel 멘트 슬라이드/Q&A 추가      ~5분
-P2  Q6     H-003 hardcoded fixture         ~30분 (조금 무거움)
+4번 트랙: 3분 영상 timeline 정밀화 + 제작
+- README의 video 링크 자리 채우기
+- 데모 시나리오 점검 (refund 유지 / Cursor 교체 / 사고 사례 슬라이드)
+- (모의 발표는 사용자 보류)
 
-다른 트랙:
-- 커밋 정리 (지금까지 작업 untracked, 이전 계획 3덩어리)
-- ADR-0007 (judge layer + adapter pattern 책임 분리)
-- 발표 자료 통합 (slides/ 5장 분산 → index 또는 README 묶기)
-- 모의 발표
+새 위협 표면 발견 시:
+- round 007에서 새 질문 추가
 ```
 
 ---
@@ -71,5 +70,5 @@ P2  Q6     H-003 hardcoded fixture         ~30분 (조금 무거움)
 ## 회복 순서 (다음 세션 시작 시)
 
 1. 이 파일 (`score.md`) 한 화면 보기
-2. 최신 round 파일 (`rounds/005-...md`)
-3. 위 큐 또는 다른 트랙 — 사용자 결정
+2. 최신 round 파일 (`rounds/006-...md`)
+3. critique 외 트랙 또는 사용자 결정
