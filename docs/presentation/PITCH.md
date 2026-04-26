@@ -32,16 +32,22 @@ Verbatim:
 
 ## 같은 패턴이 *이미* 현실에서 발생
 
-| 패턴 (우리 측정) | 실제 사례 | 1차 책임 |
-|---|---|---|
-| "지연되고 있습니다" | Cursor / Copilot (reported) | pre-commit verification |
-| "직접 살펴보겠습니다" | Replit AI 2025 (CEO 인지) | execution control |
-| "곧 처리됩니다" | **Air Canada 2024** ⚓ | **gate / policy** |
+우리가 측정한 *"곧 처리됩니다 / 해결되는 대로"* 류는
+**Air Canada 사고와 정확히 같은 패턴**입니다.
 
-⚓ Air Canada: BC Civil Resolution Tribunal — 챗봇이 *없는 정책* 약속 → 회사 패소.
-> *"A gate should have caught the first promise. We catch the next 999."*
+### ⚓ Air Canada chatbot (2024) — 무엇이 일어났나
 
-학술 anchor: [Sharma et al. 2023](https://arxiv.org/abs/2310.13548) — Anthropic alignment team이 5 SOTA 모델에서 같은 sycophancy 효과 측정.
+1. 고객이 환불 정책 문의
+2. 챗봇이 *없는 정책* 안내 ("사후에 환불 신청 가능")
+3. 고객은 그 답변을 믿고 항공권 구매
+4. 회사 측: *"챗봇은 참고용, 책임 없음"* 주장
+5. **BC Civil Resolution Tribunal: "챗봇 = 회사의 일부.**
+   **회사가 책임진다."** ([판결](https://www.canlii.org/en/commentary/doc/2025CanLIIDocs1963))
+
+→ AI 출력이 *법적 책임의 대상*이 된 첫 대표 사례.
+
+> *"A gate should have caught the first promise.*
+> *We catch the next 999 — and feed the pattern back as policy input."*
 
 ---
 
