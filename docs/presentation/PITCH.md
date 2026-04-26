@@ -124,6 +124,24 @@ Finding (signal) → orchestrator → 재판단
 
 ---
 
+## 본 도구가 제공하는 것
+
+- agent의 자기보고(trace)와 실제 실행 기록(tool log)을 분리해 검증
+- 표면적 거짓 (heuristic) + 의미적 거짓 (LLM judge) 2-layer 검증
+- 압박 조건에 따른 출력 변화의 정량 측정 (재현 가능한 회귀 테스트)
+- 탐지된 collapse를 Finding (signal) 형태로 외부 시스템에 전달
+
+본 도구가 하지 않는 것:
+
+- 차단 결정 (signal만 전달, 결정은 orchestrator)
+- 첫 사고 예방 (execution control 영역)
+- 정책 자동 생성 (인간 결정에 입력 제공)
+
+→ 기존 시스템은 위반을 막습니다.
+→ 본 도구는 통과 이후의 붕괴를 드러냅니다.
+
+---
+
 ## 만약 이 응답이 production 에 그대로 전달된다면
 
 ```
