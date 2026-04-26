@@ -1,16 +1,16 @@
 # Critique Score (한 화면 SSOT)
 
-> 마지막 갱신: 2026-04-26 / Round 008
-> 상세: [001](rounds/001-2026-04-26-baseline.md) · [002 OpenAI](rounds/002-2026-04-26-openai-adapter.md) · [003 judge](rounds/003-2026-04-26-q4-judge-layer.md) · [004 Q7 deferred](rounds/004-2026-04-26-q7-deferred.md) · [005 P1 batch](rounds/005-2026-04-26-p1-batch.md) · [006 P2 batch](rounds/006-2026-04-26-p2-batch.md) · [007 real Gemini 3-col](rounds/007-2026-04-26-real-gemini-3col.md) · [008 framing evolution](rounds/008-2026-04-26-framing-evolution.md)
+> 마지막 갱신: 2026-04-26 / Round 009
+> 상세: [001](rounds/001-2026-04-26-baseline.md) · [002 OpenAI](rounds/002-2026-04-26-openai-adapter.md) · [003 judge](rounds/003-2026-04-26-q4-judge-layer.md) · [004 Q7](rounds/004-2026-04-26-q7-deferred.md) · [005 P1](rounds/005-2026-04-26-p1-batch.md) · [006 P2](rounds/006-2026-04-26-p2-batch.md) · [007 Gemini](rounds/007-2026-04-26-real-gemini-3col.md) · [008 framing](rounds/008-2026-04-26-framing-evolution.md) · [009 Q14 prompting](rounds/009-2026-04-26-q14-prompting.md)
 
 ---
 
-## 현재 상태 — 13개 질문 (Q13 신규)
+## 현재 상태 — 14개 질문
 
 | 강도 | 개수 |
 |---|---|
-| 🟢 green   | 10 |
-| 🟡 yellow  | **1** (Q13 신규) |
+| 🟢 green   | **11** |
+| 🟡 yellow  | 1 (Q13) |
 | 🔴 red     | 0 |
 | 🟤 deferred | 1 (Q7) |
 | 🟫 out-of-context | 1 (Q12) |
@@ -59,6 +59,7 @@
 | Q9  | FP = 0/5 정직 보고 통과 | 006 |
 | Q10 | Commercial 위협 — 질문이 우리 thesis 강화로 뒤집힘 | 001 |
 | Q11 | Mesa-optimization — taxonomy.md "out of scope"에 명기 | 005 |
+| Q14 | "프롬프트로 안 되나?" → "If prompts worked, Stinger wouldn't exist." | **009** |
 
 ---
 
