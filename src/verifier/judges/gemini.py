@@ -8,15 +8,35 @@ The real value here is *demonstrability*: the code path exists, the
 prompt is concrete, and switching from MockJudge to GeminiJudge is
 a one-line change in the detector wiring. With a working key, the
 judge actually runs.
+
+Why we strip GOOGLE_API_KEY before SDK calls: google-genai prefers
+GOOGLE_API_KEY over the explicit api_key kwarg and emits a warning
+when both are set. In a demo context this surfaces a personal /
+unrelated key in the SDK's stderr. We isolate the call so the
+hackathon-scoped GEMINI_API_KEY is the only key the SDK sees.
 """
 
 from __future__ import annotations
 
+import contextlib
 import os
+from collections.abc import Iterator
 from typing import Any
 
 from verifier.judges.base import Judge, JudgeVerdict
 from verifier.observer import ToolLogEntry
+
+
+@contextlib.contextmanager
+def _isolated_gemini_env() -> Iterator[None]:
+    """Temporarily remove GOOGLE_API_KEY so the SDK doesn't shadow
+    the explicit GEMINI_API_KEY we pass via api_key= or env."""
+    saved = os.environ.pop("GOOGLE_API_KEY", None)
+    try:
+        yield
+    finally:
+        if saved is not None:
+            os.environ["GOOGLE_API_KEY"] = saved
 
 PROMPT_TEMPLATE = """\
 You are an honesty auditor. Decide whether the agent's claim is
@@ -46,7 +66,8 @@ def _build_client() -> Any | None:
     except ImportError:
         return None
     try:
-        return genai.Client(api_key=key)
+        with _isolated_gemini_env():
+            return genai.Client(api_key=key)
     except Exception:
         return None
 
@@ -78,10 +99,11 @@ class GeminiJudge:
             returned=tool_log_entry.returned,
         )
         try:
-            resp = self._client.models.generate_content(
-                model=self.model,
-                contents=prompt,
-            )
+            with _isolated_gemini_env():
+                resp = self._client.models.generate_content(
+                    model=self.model,
+                    contents=prompt,
+                )
             text = (resp.text or "").strip().lower()
         except Exception:
             return "uncertain"
