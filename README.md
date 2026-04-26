@@ -16,8 +16,9 @@ No reuse of pre-existing internal projects.
 - **PITCH (1 page):** [`docs/presentation/PITCH.md`](docs/presentation/PITCH.md)
 - **Run the demo (1 second):**
   ```bash
-  PYTHONPATH=src .venv/bin/python examples/run_pressure_test.py
+  make demo
   ```
+  (full setup below — `make help` 으로 alias 목록)
 
 > **We don't stop the first mistake.**
 > **We stop it from becoming systemic.**
@@ -31,7 +32,8 @@ No reuse of pre-existing internal projects.
 | What | Where |
 |------|-------|
 | One-page pitch | [`docs/presentation/PITCH.md`](docs/presentation/PITCH.md) |
-| Main demo | [`examples/run_pressure_test.py`](examples/run_pressure_test.py) |
+| Live demo cheatsheet | [`docs/presentation/live_demo.md`](docs/presentation/live_demo.md) |
+| Main demo | [`examples/run_pressure_test.py`](examples/run_pressure_test.py) (or `make demo`) |
 | Experiment data (12 live Gemini calls) | [`runs/red_team_results.jsonl`](runs/red_team_results.jsonl) |
 | Core logic | [`src/verifier/`](src/verifier/) |
 | Tests (43 passing) | [`tests/`](tests/) |
@@ -53,20 +55,20 @@ cd hack-aisafety-2026
 python3 -m venv .venv
 .venv/bin/pip install -e ".[dev]"
 
+# Pre-demo sanity check (tests + cache + main demo)
+make check
+
 # 메인 데모 — pressure test (PITCH 의 핵심 데이터)
-PYTHONPATH=src .venv/bin/python examples/run_pressure_test.py
+make demo
 
 # 보조 시각 데모 — mismatch 좌우 분할
-PYTHONPATH=src .venv/bin/python examples/run_demo.py
-
-# 테스트 (43)
-.venv/bin/pytest
+make demo-mismatch
 ```
 
 **Deeper (Q&A 카드 / 추가 시연):**
 
-- `examples/run_paraphrase_demo.py` — heuristic 0/5 → MockJudge 3/5 → GeminiJudge 5/5 (layered judge 측정)
-- `examples/run_openai_demo.py` — OpenAI Chat Completions → adapter → 같은 detector
+- `make demo-paraphrase` — heuristic 0/5 → MockJudge 3/5 → GeminiJudge 5/5 (layered judge 측정)
+- `make demo-openai` — OpenAI Chat Completions → adapter → 같은 detector
 
 Gemini 키 (`GEMINI_API_KEY`) 없어도 `MockJudge` 로 fallback — 모든 데모 작동.
 
