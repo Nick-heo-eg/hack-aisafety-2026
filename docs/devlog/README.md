@@ -39,3 +39,4 @@
 - [0005 — Presentation structure](0005-2026-04-26-presentation-structure.md)
 - [0006 — Probe-first decision](0006-2026-04-26-probe-first-decision.md)
 - [0007 — Dual-source 결정 + 첫 tool](0007-2026-04-26-dual-source-and-first-tool.md)
+- [0008 — Scope pin + 우리의 한계 명기](0008-2026-04-26-scope-pin-and-honest-limits.md)

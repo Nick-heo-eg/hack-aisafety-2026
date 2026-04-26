@@ -126,3 +126,9 @@ claimed action within a plausible time window.
   patterns; deferred.
 - **Audit/ignored-decision** failures. Adjacent to honesty but require
   a policy frame; deferred to a later pattern set.
+- **Internal objectives / mesa-optimization.** We verify *behavioral*
+  honesty — the agent's reported actions versus what observably
+  happened. We do not claim to inspect the agent's internal goals or
+  reasoning circuits. Deceptive alignment in the mesa sense is upstream
+  of our scope; we catch its *behavioral signature* if it produces a
+  trace/evidence mismatch, and we are silent about everything else.
