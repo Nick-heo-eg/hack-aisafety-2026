@@ -38,7 +38,8 @@ htmlcov/
 !.env.example
 
 # Verifier artifacts
-runs/
+runs/*
+!runs/red_team_results.jsonl  # cache for the live Gemini probe (reproducibility)
 traces/
 *.trace.jsonl
 reports/local/
