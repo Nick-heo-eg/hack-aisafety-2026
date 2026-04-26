@@ -124,6 +124,19 @@ git log --oneline -5                     # 진행 확인
 
 - `docs/critique/` — **내부 critique engine**. 발표에 언급 안 함.
   - `score.md` — 15 질문 한 화면 (현재: 🔴 0 / 🟡 **2** (Q13, Q15) / 🟢 11 / 🟤 1 / 🟫 1 — round 010에서 Q15 (domain scope) yellow 등록)
+
+## 🎬 발표 트랙 (백지 재시작 — 2026-04-26)
+
+이전 video_script + slides 6장 **전부 폐기**. 시간/음성/컷 가정 다 기존 자산은 `.bak` 으로:
+
+- `docs/video_script.md.bak` — 3분 timeline (참고용)
+- `docs/demo_script.md.bak` — 30초 멘트 (참고용)
+- `docs/slides.bak/` — 6장 전부 (02 Two Writers 다이어그램만 *후보로* 재활용 검토)
+
+새 트랙: `docs/presentation/` — 현재 비어있음. 다음 세션이 *백지에서* 결정:
+데모 흐름 / 시각 자료 형태 / 발표 매체 / 청중 / 길이 — 모두 미정.
+
+**살아있는 자산:** `examples/run_*.py` 3개 (변경 없음, 43 tests passing).
   - `questions.jsonl` — 질문 카탈로그
   - `rounds/001-...md` — Round 1 baseline 진단
   - 다음 세션 회복 시 `score.md` 먼저 읽기
