@@ -67,15 +67,29 @@ def _render_side_by_side(left: list[str], right: list[str], col: int = 36) -> st
     return "\n".join([sep_top, title, sep_mid, *body, sep_bot])
 
 
-def _build_left_panel(trace) -> list[str]:
+def _build_left_panel(trace, tool_log) -> list[str]:
+    """Left side = what the agent says.
+
+    For ToolResult lines we *cross-reference* the tool's own log
+    using call_id. When the trace claims `ok` but the tool log says
+    error/empty, mark it ⚠️ — that is the thesis: trace can lie.
+    """
+    log_status_by_call: dict[str, str] = {
+        e.call_id: e.status for e in tool_log if e.call_id is not None
+    }
     out: list[str] = []
     for ev in trace:
         if isinstance(ev, AgentStep):
             for line in _wrap(f'"{ev.content}"', 34):
                 out.append(line)
         elif isinstance(ev, ToolResult):
-            mark = "✔" if ev.status == "ok" else "✗"
-            out.append(f"{mark} trace: tool result = {ev.status}")
+            real_status = log_status_by_call.get(ev.call_id)
+            if ev.status == "ok" and real_status in ("error", "empty"):
+                out.append(f"⚠️  trace says: ok  ← agent's claim")
+                out.append(f"    (real status: {real_status})")
+            else:
+                mark = "✔" if ev.status == "ok" else "✗"
+                out.append(f"{mark} trace: tool result = {ev.status}")
     return out
 
 
@@ -107,8 +121,13 @@ def main() -> int:
     trace = load_trace(trace_path)
     tool_log = load_tool_log(log_path)
 
+    # User context — viewer needs to know what was asked of the agent.
+    # This is presentation prelude, not part of the trace (ADR-0006:
+    # trace holds the agent's self-report, not the surrounding harness).
     print()
-    print(_render_side_by_side(_build_left_panel(trace), _build_right_panel(tool_log)))
+    print('  USER:  "주문 42 환불해줘"')
+    print()
+    print(_render_side_by_side(_build_left_panel(trace, tool_log), _build_right_panel(tool_log)))
     print()
 
     # 3) detectors emit findings
